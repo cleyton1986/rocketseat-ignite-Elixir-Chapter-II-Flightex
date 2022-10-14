@@ -15,22 +15,34 @@ defmodule Flightex.Bookings.CreateOrUpdateTest do
         complete_date: ~N[2001-05-07 03:05:00],
         local_origin: "Brasilia",
         local_destination: "Bananeiras",
-        user_id: "e9f7d281-b9f2-467f-9b34-1b284ed58f9e",
+        user_id: "12345678900"
       }
 
-      {:ok, uuid} = CreateOrUpdate.call(params)
+      {_ok, uuid} = CreateOrUpdate.call(params)
 
-      {:ok, response} = Agent.get(uuid)
+      {_ok, response} = Agent.get(uuid)
 
       expected_response = %Flightex.Bookings.Booking{
-        id: response.id,
+        id: uuid,
         complete_date: ~N[2001-05-07 03:05:00],
         local_destination: "Bananeiras",
         local_origin: "Brasilia",
-        user_id: "e9f7d281-b9f2-467f-9b34-1b284ed58f9e"
+        user_id: "12345678900"
       }
 
       assert response == expected_response
+    end
+
+    test "fail, create or update booking" do
+      params = %{
+        complete_date: ~N[2001-05-07 03:05:00],
+        local_origin: "Brasilia",
+        local_destination: "Bananeiras",
+        user_id: 12_345_678_900
+      }
+
+      response = Flightex.create_or_update_booking(params)
+      assert {:error, "Invalid Params"} == response
     end
   end
 end

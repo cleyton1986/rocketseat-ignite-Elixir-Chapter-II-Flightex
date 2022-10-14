@@ -1,14 +1,11 @@
 defmodule Flightex.Bookings.AgentTest do
-  use ExUnit.Case
-
+  use ExUnit.Case, async: false
   import Flightex.Factory
-
   alias Flightex.Bookings.Agent, as: BookingsAgent
 
   describe "save/1" do
     setup do
       BookingsAgent.start_link(%{})
-
       :ok
     end
 
@@ -18,7 +15,7 @@ defmodule Flightex.Bookings.AgentTest do
         |> build()
         |> BookingsAgent.save()
 
-      {:ok, uuid} = response
+      {_ok, uuid} = response
 
       assert response == {:ok, uuid}
     end
@@ -55,7 +52,6 @@ defmodule Flightex.Bookings.AgentTest do
       {:ok, _uuid} = BookingsAgent.save(booking)
 
       response = BookingsAgent.get("banana")
-
       expected_response = {:error, "Booking not found"}
 
       assert response == expected_response

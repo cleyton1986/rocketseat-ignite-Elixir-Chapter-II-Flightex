@@ -1,5 +1,5 @@
 defmodule Flightex.Users.CreateOrUpdateTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
 
   alias Flightex.Users.{Agent, CreateOrUpdate}
 
