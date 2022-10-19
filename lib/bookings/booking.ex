@@ -1,18 +1,23 @@
 defmodule Flightex.Bookings.Booking do
-  @keys [:complete_date, :local_origin, :local_destination, :user_id, :id]
+  @keys [:id, :data_completa, :cidade_origem, :cidade_destino, :user_id]
+
   @enforce_keys @keys
+
   defstruct @keys
 
-  def build(date, origin, destiny, user_id) when is_bitstring(user_id) do
+  def build(id, data_completa, cidade_origem, cidade_destino, user_id)
+      when is_bitstring(cidade_origem) and is_bitstring(cidade_destino) do
     {:ok,
      %__MODULE__{
-       id: UUID.uuid4(),
-       complete_date: date,
-       local_origin: origin,
-       local_destination: destiny,
+       id: id,
+       data_completa: data_completa,
+       cidade_origem: cidade_origem,
+       cidade_destino: cidade_destino,
        user_id: user_id
      }}
   end
 
-  def build(_date, _origin, _destiny, _user_id), do: {:error, "Invalid Params"}
+  def build(_id, _data_completa, _cidade_origem, _cidade_destino, _user_id) do
+    {:error, "Invalid parameters"}
+  end
 end

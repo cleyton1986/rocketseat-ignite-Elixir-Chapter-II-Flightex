@@ -1,47 +1,36 @@
 defmodule Flightex.Users.CreateOrUpdateTest do
-  use ExUnit.Case, async: false
+  use ExUnit.Case
 
-  alias Flightex.Users.{Agent, CreateOrUpdate}
+  alias Flightex.Users.Agent, as: UserAgent
+  alias Flightex.Users.CreateOrUpdate
 
   describe "call/1" do
-    setup do
-      Agent.start_link(%{})
-      # O Agent.start_link vai iniciar os 2 agents antes do teste
-      # Deve ser implementado para os testes passarem
-      :ok
+    test "when all params are valid, saves the user" do
+      UserAgent.start_link()
+
+      user_params = %{name: "Hessel", email: "hessel@hessel.com", cpf: "12345678900"}
+
+      response = CreateOrUpdate.call(user_params)
+
+      assert {:ok, _user_id} = response
     end
 
-    test "when all params are valid, return a tuple" do
-      params = %{
-        name: "Jp",
-        email: "jp@banana.com",
-        cpf: "12345678900"
-      }
+    test "when there are missing params, returns an error" do
+      user_params = %{name: "Hessel", email: "hessel@hessel.com"}
 
-      CreateOrUpdate.call(params)
+      response = CreateOrUpdate.call(user_params)
 
-      {_ok, response} = Agent.get(params.cpf)
-
-      expected_response = %Flightex.Users.User{
-        cpf: "12345678900",
-        email: "jp@banana.com",
-        id: response.id,
-        name: "Jp"
-      }
+      expected_response = {:error, "Invalid parameters"}
 
       assert response == expected_response
     end
 
-    test "when cpf is a integer, returns an error" do
-      params = %{
-        name: "Jp",
-        email: "jp@banana.com",
-        cpf: 12_345_678_900
-      }
+    test "when there are invalid params, returns an error" do
+      user_params = %{name: "Hessel", email: "hessel@hessel.com", cpf: 1}
 
-      expected_response = {:error, "Cpf must be a String"}
+      response = CreateOrUpdate.call(user_params)
 
-      response = CreateOrUpdate.call(params)
+      expected_response = {:error, "Invalid parameters"}
 
       assert response == expected_response
     end

@@ -23,10 +23,8 @@ defmodule Flightex.MixProject do
   defp deps do
     [
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:decimal, "~> 2.0"},
-      {:ex_machina, "~> 2.5.0"},
-      {:elixir_uuid, "~> 1.2"},
-      {:json_response, git: "https://github.com/joaopealves/json_response"}
+      {:ex_machina, "~> 2.7.0"},
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 

@@ -1,25 +1,30 @@
 defmodule Flightex.Bookings.BookingTest do
-  use ExUnit.Case, async: false
+  use ExUnit.Case
+
+  import Flightex.Factory
 
   alias Flightex.Bookings.Booking
 
-  describe "build/4" do
-    test "when all params are valid, returns a booking" do
-      {_ok, response} =
-        Booking.build(
-          ~N[2001-05-07 01:46:20],
-          "Brasilia",
-          "ilha das bananas",
-          "12345678900"
-        )
+  describe "build/5" do
+    test "when all params are valid, returns a booking struct" do
+      booking_id = UUID.uuid4()
+      user_id = UUID.uuid4()
 
-      expected_response = %Flightex.Bookings.Booking{
-        complete_date: ~N[2001-05-07 01:46:20],
-        id: response.id,
-        local_destination: "ilha das bananas",
-        local_origin: "Brasilia",
-        user_id: "12345678900"
-      }
+      response =
+        Booking.build(booking_id, ~N[2021-01-02 15:30:45], "Sorocaba", "São Paulo", user_id)
+
+      expected_response = {:ok, build(:booking, id: booking_id, user_id: user_id)}
+
+      assert response == expected_response
+    end
+
+    test "when there are invalid params, returns an error" do
+      booking_id = UUID.uuid4()
+      user_id = UUID.uuid4()
+
+      response = Booking.build(booking_id, ~N[2021-01-02 15:30:45], 321, 123, user_id)
+
+      expected_response = {:error, "Invalid parameters"}
 
       assert response == expected_response
     end

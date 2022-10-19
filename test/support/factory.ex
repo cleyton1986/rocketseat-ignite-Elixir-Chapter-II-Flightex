@@ -4,22 +4,24 @@ defmodule Flightex.Factory do
   alias Flightex.Bookings.Booking
   alias Flightex.Users.User
 
-  def users_factory do
+  def user_factory do
     %User{
       id: UUID.uuid4(),
-      name: "Jp",
-      email: "jp@banana.com",
+      name: "Hessel",
+      email: "hessel@hessel.com",
       cpf: "12345678900"
     }
   end
 
   def booking_factory do
+    user = build(:user)
+
     %Booking{
-      complete_date: ~N[2001-05-07 03:05:00],
-      local_origin: "Brasilia",
-      local_destination: "Bananeiras",
-      user_id: "12345678900",
-      id: UUID.uuid4()
+      id: UUID.uuid4(),
+      data_completa: ~N[2021-01-02 15:30:45],
+      cidade_origem: "Sorocaba",
+      cidade_destino: "São Paulo",
+      user_id: user.id
     }
   end
 end
