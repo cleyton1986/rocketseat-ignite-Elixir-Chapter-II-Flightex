@@ -8,7 +8,7 @@ defmodule Flightex.Users.CreateOrUpdateTest do
     test "when all params are valid, saves the user" do
       UserAgent.start_link()
 
-      user_params = %{name: "Hessel", email: "hessel@hessel.com", cpf: "12345678900"}
+      user_params = %{name: "Cleyton", email: "cleyton@admin.com", cpf: "12345678900"}
 
       response = CreateOrUpdate.call(user_params)
 
@@ -16,7 +16,7 @@ defmodule Flightex.Users.CreateOrUpdateTest do
     end
 
     test "when there are missing params, returns an error" do
-      user_params = %{name: "Hessel", email: "hessel@hessel.com"}
+      user_params = %{name: "Cleyton", email: "cleyton@admin.com"}
 
       response = CreateOrUpdate.call(user_params)
 
@@ -26,7 +26,7 @@ defmodule Flightex.Users.CreateOrUpdateTest do
     end
 
     test "when there are invalid params, returns an error" do
-      user_params = %{name: "Hessel", email: "hessel@hessel.com", cpf: 1}
+      user_params = %{name: "Cleyton", email: "cleyton@admin.com", cpf: 1}
 
       response = CreateOrUpdate.call(user_params)
 

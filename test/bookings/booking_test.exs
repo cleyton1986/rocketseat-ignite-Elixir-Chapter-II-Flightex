@@ -9,9 +9,14 @@ defmodule Flightex.Bookings.BookingTest do
     test "when all params are valid, returns a booking struct" do
       booking_id = UUID.uuid4()
       user_id = UUID.uuid4()
-
       response =
-        Booking.build(booking_id, ~N[2021-01-02 15:30:45], "Sorocaba", "São Paulo", user_id)
+        Booking.build(
+          booking_id,
+          ~N[2022-10-19 19:05:01],
+          "Recife",
+          "Pernambuco",
+          user_id
+        )
 
       expected_response = {:ok, build(:booking, id: booking_id, user_id: user_id)}
 
@@ -21,8 +26,14 @@ defmodule Flightex.Bookings.BookingTest do
     test "when there are invalid params, returns an error" do
       booking_id = UUID.uuid4()
       user_id = UUID.uuid4()
-
-      response = Booking.build(booking_id, ~N[2021-01-02 15:30:45], 321, 123, user_id)
+      response =
+        Booking.build(
+          booking_id,
+          ~N[2022-10-19 16:35:10],
+          321,
+          123,
+          user_id
+        )
 
       expected_response = {:error, "Invalid parameters"}
 

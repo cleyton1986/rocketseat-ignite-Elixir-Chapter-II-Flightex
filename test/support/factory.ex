@@ -7,8 +7,8 @@ defmodule Flightex.Factory do
   def user_factory do
     %User{
       id: UUID.uuid4(),
-      name: "Hessel",
-      email: "hessel@hessel.com",
+      name: "Cleyton",
+      email: "cleyton@admin.com",
       cpf: "12345678900"
     }
   end
@@ -18,9 +18,9 @@ defmodule Flightex.Factory do
 
     %Booking{
       id: UUID.uuid4(),
-      data_completa: ~N[2021-01-02 15:30:45],
-      cidade_origem: "Sorocaba",
-      cidade_destino: "São Paulo",
+      data_completa: ~N[2022-10-19 19:05:01],
+      cidade_origem: "Recife",
+      cidade_destino: "Pernambuco",
       user_id: user.id
     }
   end

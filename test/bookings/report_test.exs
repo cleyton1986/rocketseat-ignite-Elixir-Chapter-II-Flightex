@@ -67,8 +67,8 @@ defmodule Flightex.Bookings.ReportTest do
       {:ok, response} = File.read("reports/report.csv")
 
       expected_response =
-        "#{booking2021.user_id},Sorocaba,São Paulo,2021-01-02 15:30:45\n" <>
-          "#{booking2050.user_id},Sorocaba,São Paulo,2050-01-01 00:00:00\n"
+        "#{booking2021.user_id},Recife,Pernambuco,2022-10-19 19:05:01\n" <>
+          "#{booking2050.user_id},Recife,Pernambuco,2050-01-01 00:00:00\n"
 
       assert response == expected_response
     end

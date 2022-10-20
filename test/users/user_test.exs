@@ -9,7 +9,7 @@ defmodule Flightex.Users.UserTest do
     test "when all parameters are valid, returns an user struct" do
       user_id = UUID.uuid4()
 
-      response = User.build(user_id, "Hessel", "hessel@hessel.com", "12345678900")
+      response = User.build(user_id, "Cleyton", "cleyton@admin.com", "12345678900")
 
       expected_response = {:ok, build(:user, id: user_id)}
 
@@ -17,7 +17,7 @@ defmodule Flightex.Users.UserTest do
     end
 
     test "when there are invalid params, returns an error" do
-      response = User.build("917364285", "Hessel", "hessel@hessel.com", 12_345_678_900)
+      response = User.build("123456789", "Cleyton", "cleyton@admin.com", 12_345_678_900)
 
       expected_response = {:error, "Invalid parameters"}
 

@@ -22,8 +22,8 @@ defmodule Flightex.Bookings.CreateOrUpdateTest do
     test "whe all params are valid, creates a booking", %{user_id: user_id} do
       booking_params = %{
         data_completa: "2021-01-01T00:00:00Z",
-        cidade_origem: "Sorocaba",
-        cidade_destino: "São Paulo"
+        cidade_origem: "Recife",
+        cidade_destino: "Pernambuco"
       }
 
       response = CreateOrUpdate.call(user_id, booking_params)
@@ -36,8 +36,8 @@ defmodule Flightex.Bookings.CreateOrUpdateTest do
 
       booking_params = %{
         data_completa: "2021-01-01T00:00:00Z",
-        cidade_origem: "Sorocaba",
-        cidade_destino: "São Paulo"
+        cidade_origem: "Recife",
+        cidade_destino: "Pernambuco"
       }
 
       response = CreateOrUpdate.call(user_id, booking_params)
@@ -52,8 +52,8 @@ defmodule Flightex.Bookings.CreateOrUpdateTest do
 
       booking_params = %{
         data_completa: "2021-01-01T00:00:00Z",
-        cidade_origem: "Sorocaba",
-        cidade_destino: "São Paulo"
+        cidade_origem: "Recife",
+        cidade_destino: "Pernambuco"
       }
 
       response = CreateOrUpdate.call(user_id, booking_params)
@@ -66,8 +66,8 @@ defmodule Flightex.Bookings.CreateOrUpdateTest do
     test "when the 'data_completa' is invalid, returns an error", %{user_id: user_id} do
       booking_params = %{
         data_completa: "01/01/2021",
-        cidade_origem: "Sorocaba",
-        cidade_destino: "São Paulo"
+        cidade_origem: "Recife",
+        cidade_destino: "Pernambuco"
       }
 
       response = CreateOrUpdate.call(user_id, booking_params)
