@@ -7,13 +7,24 @@
 </h1>
 
 <h3 align="center">
-  Chapter II - Desafio 01: Reservas de voos
+✅  Chapter II - Desafio 01: Reservas de voos
+</h3>
+
+<h3 align="center">
+✅  Chapter II - Desafio 02: Relatório de reservas de voos
+</h3>
+
+<h3 align="center">
+✅  Chapter II - Desafio 03: Testando a aplicação
 </h3>
 
 </p>
 
+</br>
+
 <blockquote align="center">“Tudo deveria se tornar o mais simples possível, mas não simplificado - Albert Einstein”!</blockquote>
 
+</br>
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/cleyton1986/rocketseat-ignite-desafio-01-elixir-reservas-de-voo?color=%2304D361">
 
@@ -30,7 +41,7 @@
 
 <p align="center">
   <a href="#tecnologias-e-recursos">Tecnologias e Recursos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#sobre-o-desafio">Sobre o desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sobre-o-desafios">Sobre o desafios</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#específicação-dos-testes">Especificação de testes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#instalação-e-execução">Instalação e execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#calendar-entrega">Entrega</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -44,37 +55,13 @@
 
 </br>
 
-## Sobre o desafio
+## Sobre o desafios
+
+- [Desafio - 01](https://www.notion.so/Desafio-01-Reservas-de-voos-f5fd8814ce904360b2500449143e589e)
+- [Desafio - 02](https://www.notion.so/Desafio-02-Relat-rio-de-reservas-de-voos-cd44db56fc0a432896c23475a21b8f29)
+- [Desafio - 03](https://www.notion.so/Desafio-03-Testando-a-aplica-o-723c200d933d41b598046078e462d822#9add5718b53f4e409a609597fb95d494)
 
 Nesse desafio, você deverá criar uma aplicação de reserva de voos, onde haverá o cadastro de usuários e o cadastro de reservas para um usuário.
-
-A struct do usuário deverá possuir os seguintes campos:
-
-```js 
-%User{
-	id: id,
-	name: name,
-	email: email,
-	cpf: cpf
-}
-
-```
-
-**Obs:** O Id deve ser gerado automaticamente, pode ser um inteiro ou um UUID, mas não pode se repetir.
-
-A struct da reserva deverá possuir os seguintes campos:
-
-```js 
-%Booking{
-	id: id,
-	complete_date: complete_date,
-	local_origin: local_origin,
-	local_destination: local_destination,
-	user_id: user_id
-}
-```
-
-O campo `data_completa` deverá ser uma `NaiveDateTime`, que é um formato de data sem fuso horário e com funções auxiliares. Mais detalhes sobre [NaiveDateTime aqui](https://hexdocs.pm/elixir/NaiveDateTime.html#content).
 
 <aside>
 ⚠️ É importante que todos os dados sejam salvos em um **Agent**, de acordo com o que foi visto no módulo.
@@ -164,8 +151,6 @@ Esse desafio foi entregue na plataforma Skylab - Rocketseat.
 </p>
 
 ## Instalação e execução
-</br>
-
 
 ### Configuração do ambiente:
 <p>
